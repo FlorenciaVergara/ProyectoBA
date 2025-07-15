@@ -7,11 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
-    List<Articulo> findByNombre(String nombre);
-    List<Articulo> findByNombreContaining(String texto);
-    List<Articulo> findByPrecioGreaterThan(Double precio);
-    List<Articulo> findByPrecioBetween(Double min, Double max);
-    List<Articulo> findByNombreIgnoreCase(String nombre);
-    List<Articulo> findAllByOrderByPrecioAsc();
-    List<Articulo> findByNombreAndPrecioGreaterThan(String nombre, Double precio);
+    List<Articulo> findByNombreContainingIgnoreCase(String nombre);
 }

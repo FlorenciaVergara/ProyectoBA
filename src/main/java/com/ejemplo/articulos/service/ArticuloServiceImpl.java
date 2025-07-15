@@ -2,7 +2,6 @@ package com.ejemplo.articulos.service;
 
 import com.ejemplo.articulos.model.Articulo;
 import com.ejemplo.articulos.repository.ArticuloRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class ArticuloServiceImpl implements ArticuloService {
 
     private final ArticuloRepository articuloRepository;
 
-    @Autowired
     public ArticuloServiceImpl(ArticuloRepository articuloRepository) {
         this.articuloRepository = articuloRepository;
     }
@@ -38,4 +36,8 @@ public class ArticuloServiceImpl implements ArticuloService {
     public void eliminarArticulo(Long id) {
         articuloRepository.deleteById(id);
     }
+
+    public List<Articulo> buscarPorNombre(String nombre) {
+    return articuloRepository.findByNombreContainingIgnoreCase(nombre);
+}
 }

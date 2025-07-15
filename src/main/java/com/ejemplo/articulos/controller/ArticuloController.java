@@ -2,7 +2,6 @@ package com.ejemplo.articulos.controller;
 
 import com.ejemplo.articulos.model.Articulo;
 import com.ejemplo.articulos.service.ArticuloService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,6 @@ public class ArticuloController {
 
     private final ArticuloService articuloService;
 
-    @Autowired
     public ArticuloController(ArticuloService articuloService) {
         this.articuloService = articuloService;
     }
@@ -53,4 +51,10 @@ public class ArticuloController {
         articuloService.eliminarArticulo(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(params = "nombre")
+public List<Articulo> buscarPorNombre(@RequestParam String nombre) {
+    return articuloService.buscarPorNombre(nombre);
+}
+
 }
